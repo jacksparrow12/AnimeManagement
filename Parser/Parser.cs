@@ -7,26 +7,49 @@ using System.Collections.Generic;
 public class Parser
 {
 
-    private string[] fileEntries;
+    private string[] dirEntries;
     private List<Anime> animeList = new List<Anime>();
-    private string path;
-    private static Parser parser = new Parser();
+    private static Parser instance = new Parser();
 
     public static Parser getInstance()
     {
-        return parser;
+        return instance;
     }
 
     /*
      * The folders within a path are extrected.
      */
-    public void processDirectory(string path)
+    public void processDirectory(string path, int depth)
     {
-        this.path = path;
         try
         {
-            fileEntries = Directory.GetDirectories(path);
-            removeDirectoryFromPath();
+            dirEntries = Directory.GetDirectories(path);        //Get all folders in path
+            foreach (string dir in dirEntries)
+            {
+                if (depth < 1)
+                {
+                    processDirectory(dir, depth++);             //Go one directory deeper
+                }
+                else if (depth == 1)
+                {
+                    char firstChar = dir[0];
+                    if (firstChar == '[' || firstChar == '(')                                           //Folders which starts with '[' or '(' will be parsed to the corresponding Object
+                    {
+                        Object output;
+                        HashMap.getInstance().getMap().TryGetValue("WithFansub", out output);
+                        AnimeCreateInterface tmp = (AnimeCreateInterface)output;
+                        tmp.createAnimeObject(dir);
+                    }
+                    else
+                    {
+                        Object output;
+                        HashMap.getInstance().getMap().TryGetValue("NoFansub", out output);
+                        AnimeCreateInterface tmp = (AnimeCreateInterface)output;
+                        tmp.createAnimeObject(dir);
+                    }
+                }
+
+            }
         }
         catch (DirectoryNotFoundException e)
         {
@@ -34,23 +57,13 @@ public class Parser
         }
     }
 
-
     /*
      * Returns all folders with full path.
      */
-    public string[] getFileEntries()
+    public string[] getDirEntries()
     {
-        return fileEntries;
+        return dirEntries;
     }
-
-    /*
-     * Returns the path;
-     */
-    public string getPath()
-    {
-        return path;
-    }
-
 
     /*
      * Returns the anime list.
@@ -59,41 +72,5 @@ public class Parser
     {
         return animeList;
     }
-
-    /*
-     * The parser makes from each folder an anime object and adds it to the list.
-     */
-    public void parseDirToAnime()
-    {
-        foreach (string anime in fileEntries)
-        {
-            animeList.Add(new Anime(anime, 0, "", "", "", "", ""));
-        }
-    }
-
-    /*
-     * The full path from the entries are removed to get just the folder names.
-     */
-    public void removeDirectoryFromPath()
-    {
-        for (int i = 0; i < fileEntries.Length; i++)
-        {
-            fileEntries[i] = fileEntries[i].Remove(0, path.Length + 1);
-        }
-    }
-
-    public static void Main(string[] args)
-    {
-        Parser test = Parser.getInstance();
-        test.processDirectory("C:\\Users\\ipek\\Desktop\\testfolder");
-        test.parseDirToAnime();
-
-        foreach (Anime anime in test.getAnimeList())
-        {
-            Console.WriteLine("{0} ", anime.getTitle());
-        }
-
-    }
-
 
 }

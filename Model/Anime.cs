@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public class Anime
 {
@@ -8,9 +9,10 @@ public class Anime
     private string fansub;
     private string source;
     private string sub;
-    private string voiceOutput;
+    private List<string> voiceOutput;
+    private string pathImg;
 
-    public Anime(string title, int episode, string description, string fansub, string source, string sub, string voiceOutput)
+    public Anime(string title, int episode, string description, string fansub, string source, string sub, List<string> voiceOutput, string pathImg)
     {
         this.title = title;
         this.episode = episode;
@@ -19,6 +21,7 @@ public class Anime
         this.source = source;
         this.sub = sub;
         this.voiceOutput = voiceOutput;
+        this.pathImg = pathImg;
     }
 
     public string getTitle()
@@ -81,15 +84,24 @@ public class Anime
         this.sub = sub;
     }
 
-    public string getVoiceOutput()
+    public List<string> getVoiceOutput()
     {
         return voiceOutput;
     }
 
-    public void setVoiceOutput(string voiceOutput)
+    public void setVoiceOutput(List<string> voiceOutput)
     {
         this.voiceOutput = voiceOutput;
     }
 
+    public string getPathImg()
+    {
+        return pathImg;
+    }
+
+    public void setPathImg(string pathImg)
+    {
+        this.pathImg = pathImg;
+    }
 
 }

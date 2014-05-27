@@ -6,13 +6,13 @@ public class Anime
     private string title;
     private int episode;
     private string description;
-    private string fansub;
-    private string source;
-    private string sub;
+    private List<string> fansub;
+    private List<string> source;
+    private List<string> sub;
     private List<string> voiceOutput;
     private string pathImg;
 
-    public Anime(string title, int episode, string description, string fansub, string source, string sub, List<string> voiceOutput, string pathImg)
+    public Anime(string title, int episode, string description, List<string> fansub, List<string> source, List<string> sub, List<string> voiceOutput, string pathImg)
     {
         this.title = title;
         this.episode = episode;
@@ -54,34 +54,52 @@ public class Anime
         this.description = description;
     }
 
-    public string getFansub()
+    public List<string> getFansub()
     {
         return fansub;
     }
 
-    public void setFansub(string fansub)
+    public void setFansub(List<string> fansub)
     {
         this.fansub = fansub;
     }
 
-    public string getSource()
+    public void addFansub(string fansub)
+    {
+        this.fansub.Add(fansub);
+    }
+
+    public List<string> getSource()
     {
         return source;
     }
 
-    public void setSource(string source)
+    public void setSource(List<string> source)
     {
         this.source = source;
     }
 
-    public string getSub()
+    public void addSource(string source)
+    {
+        this.source.Add(source);
+    }
+
+    public List<string> getSub()
     {
         return sub;
     }
 
-    public void setSub(string sub)
+    public void setSub(List<string> sub)
     {
         this.sub = sub;
+    }
+
+    public void addSub(List<string> subList)
+    {
+        foreach (string sub in subList)
+        {
+            this.sub.Add(sub);
+        }
     }
 
     public List<string> getVoiceOutput()
@@ -92,6 +110,15 @@ public class Anime
     public void setVoiceOutput(List<string> voiceOutput)
     {
         this.voiceOutput = voiceOutput;
+    }
+
+    public void addVoiceOutput(List<string> voiceOutput)
+    {
+        foreach (string voice in voiceOutput)
+        {
+            this.voiceOutput.Add(voice);
+        }
+     
     }
 
     public string getPathImg()

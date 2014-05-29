@@ -9,7 +9,7 @@ class AnimeList
 {
     private Dictionary<string, Anime> animeList = new Dictionary<string, Anime>();
     private static AnimeList instance = new AnimeList();
-
+    private AnimeList() {}
     public static AnimeList getInstance()
     {
         return instance;
@@ -77,6 +77,20 @@ class AnimeList
         output.addVoiceOutput(voiceOutputList);
         animeList[title] = output;
     }
+
+    public Dictionary<string, Anime> getAnimeList()
+    {
+        return animeList;
+    }
+
+    public void printAllEntries()
+    {
+        foreach (Anime anime in animeList.Values)
+        {
+            Console.WriteLine(anime);
+        }
+    }
+
 
 }
 

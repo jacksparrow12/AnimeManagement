@@ -9,6 +9,7 @@ using System.Text;
 
         public static string getFolder(string path)
         {
-            return path.Split().Last();
+            char[] delim = { '\\' };
+            return path.Split(delim).Last();
         }
     }

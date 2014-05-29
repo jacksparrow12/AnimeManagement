@@ -13,43 +13,52 @@ class AnimeWithFansub : AnimeCreateInterface
         int episodes = AmountOfEpisodes.getSumOfEpisodes(path);
         string folder = RemoveFullPathFromFolder.getFolder(path);
 
-        char[] split = {'[', ']' , '(', ')'};
-        string[] animeInfo = folder.Split(split);
-        
-        string fansub = animeInfo[0];
+        char[] split = {'[', ']' ,' ' ,'(', ')'};
+        string[] animeInfo = folder.Split(split);                   /*Important! When the seperator is at the beginning then an empty element will be added to the array, furthermore when two seperators are one after 
+                                                                      then again an empty element will be added, last but not least when a seperator is at the end then again an empty element will be added to the array */
+
         List<string> fansubList = new List<string>();
-        fansubList.Add(fansub);
-        
-        string title = animeInfo[1].Replace('_', ' ');
-        string tmp = animeInfo[2].ToUpper();
+        string title = "none";
         List<string> voiceOutput = new List<string>();
         List<string> sub = new List<string>();
         List<string> sourceList = new List<string>();
-        string source = "";
-        if (tmp.Contains("GERENGJAPDUB") || tmp.Contains("GERJAPDUB") || tmp.Contains("GERDUB"))
+
+        if (animeInfo.Length == 3)
         {
-            voiceOutput = getVoiceOutput(tmp);
-        }else if(tmp.Contains("GERENGSUB") || tmp.Contains("GERSUB") || tmp.Contains("ENGSUB"))
-        {
-            sub = getSub(tmp);
+            fansubList.Add(animeInfo[1]);
+            title = animeInfo[2];
         }
-        else if (tmp.Contains("720P") || tmp.Contains("1080P"))
+        else if (animeInfo.Length == 4)
         {
-            source = getSource(tmp);
-        }else
+            fansubList.Add(animeInfo[1]);
+            title = animeInfo[2];
+            sourceList.Add(animeInfo[3]);
+
+        }
+        else if (animeInfo.Length == 6)
         {
-            source = "";
+            fansubList.Add(animeInfo[1]);
+            title = animeInfo[2];
+            sourceList.Add(animeInfo[3]);
+            voiceOutput.Add(animeInfo[5]);
+        }
+        else if (animeInfo.Length == 9)
+        {
+            fansubList.Add(animeInfo[1]);
+            title = animeInfo[2];
+            sourceList.Add(animeInfo[3]);
+            voiceOutput.Add(animeInfo[5]);
+            sub.Add(animeInfo[7]);
         }
 
-        sourceList.Add(source);
         if (!instance.checkIfAnimeIsAlreadyInTheList(title))                                                    //If the anime is not in the list, then add it as new anime.
         {
-            instance.addAnimeToList(title, episodes, "", fansubList, sourceList, sub, voiceOutput, "");
+            instance.addAnimeToList(title, episodes, "no description", fansubList, sourceList, sub, voiceOutput, "no path to img");
         }
         else
         {
-            instance.addFansubToAnime(title, fansub);                                                               //If the same anime is already in the list, then add parameters like fansub, source, sub, etc. to the anime.
-            instance.addSourceToAnime(title, source);
+            instance.addFansubToAnime(title, fansubList[0]);                                                               //If the same anime is already in the list, then add parameters like fansub, source, sub, etc. to the anime.
+            instance.addSourceToAnime(title, sourceList[0]);
             instance.addSubToAnime(title, sub);
             instance.addVoiceOutputToAnime(title, voiceOutput);
         }

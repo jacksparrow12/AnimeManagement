@@ -28,11 +28,12 @@ public class Parser
             {
                 if (depth < 1)
                 {
-                    processDirectory(dir, depth++);             //Go one directory deeper
+                    processDirectory(dir, ++depth);             //Go one directory deeper
                 }
                 else if (depth == 1)
                 {
-                    char firstChar = dir[0];
+                    String dire = RemoveFullPathFromFolder.getFolder(dir);                      //Cut the full path to get the folder name for checking the first character of the folder to know if fansub exists
+                    char firstChar = dire[0];
                     if (firstChar == '[' || firstChar == '(')                                           //Folders which starts with '[' or '(' will be parsed to the corresponding Object
                     {
                         Object output;
@@ -48,7 +49,7 @@ public class Parser
                         tmp.createAnimeObject(dir);
                     }
                 }
-
+                depth = 0;
             }
         }
         catch (DirectoryNotFoundException e)
@@ -73,4 +74,14 @@ public class Parser
         return animeList;
     }
 
+
+    public static void Main()
+    {
+
+        Parser parser = Parser.getInstance();
+        AnimeList instance = AnimeList.getInstance();
+        parser.processDirectory("C:\\Users\\ipek\\Desktop\\testfolder", 0);
+        instance.printAllEntries();
+
+    }
 }

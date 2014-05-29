@@ -131,4 +131,9 @@ public class Anime
         this.pathImg = pathImg;
     }
 
+    public override String ToString()
+    {
+        return this.title+" "+this.episode+" "+this.description+" "+this.fansub+" "+this.source+" "+this.voiceOutput+" "+this.sub+" "+this.pathImg;
+    }
+
 }

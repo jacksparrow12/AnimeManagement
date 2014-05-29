@@ -89,6 +89,7 @@ class AnimeList
         {
             Console.WriteLine(anime);
         }
+
     }
 
 

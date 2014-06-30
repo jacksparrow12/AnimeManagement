@@ -11,6 +11,7 @@ class AnimeWithFansub : AnimeCreateInterface
     public void createAnimeObject(string path)
     {
         int episodes = AmountOfEpisodes.getSumOfEpisodes(path);
+        string img = PathOfImage.getPathOfImage(path);
         string folder = RemoveFullPathFromFolder.getFolder(path);
 
         char[] split = {'[', ']' ,' ' ,'(', ')'};
@@ -53,7 +54,7 @@ class AnimeWithFansub : AnimeCreateInterface
 
         if (!instance.checkIfAnimeIsAlreadyInTheList(title))                                                    //If the anime is not in the list, then add it as new anime.
         {
-            instance.addAnimeToList(title, episodes, "no description", fansubList, sourceList, sub, voiceOutput, "no path to img");
+            instance.addAnimeToList(title, episodes, "no description", fansubList, sourceList, sub, voiceOutput, img);
         }
         else
         {

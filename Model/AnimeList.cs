@@ -92,6 +92,24 @@ class AnimeList
 
     }
 
+    /*
+     *Get title of all anime. 
+     */
+    public String[] getAllTitle()
+    {
+        string[] list = new string[animeList.Count];
+        int counter = 0;
+        foreach (Anime anime in animeList.Values)
+        {
+            list[counter++] = anime.getTitle();
+        }
 
+        return list;
+    }
+
+    public Anime getAnimeByTitle(string title)
+    {
+        return animeList[title];
+    }
 }
 

@@ -74,7 +74,7 @@ public class Parser
         return animeList;
     }
 
-
+    /*
     public static void Main()
     {
 
@@ -84,4 +84,5 @@ public class Parser
         instance.printAllEntries();
 
     }
+     * */
 }

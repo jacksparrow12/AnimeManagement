@@ -38,10 +38,7 @@ class AnimeList
      */
     public void addFansubToAnime(string title, string fansub)
     {
-        Anime output;
-        animeList.TryGetValue(title, out output);
-        output.addFansub(fansub);
-        animeList[title] = output;
+        animeList[title].addFansub(fansub);
     }
 
     /*
@@ -49,10 +46,7 @@ class AnimeList
      */
     public void addSourceToAnime(string title, string source)
     {
-        Anime output;
-        animeList.TryGetValue(title, out output);
-        output.addSource(source);
-        animeList[title] = output;
+        animeList[title].addSource(source);
     }
 
     /*
@@ -60,11 +54,7 @@ class AnimeList
      */
     public void addSubToAnime(string title, List<string> subList)
     {
-        Anime output;
-        animeList.TryGetValue(title, out output);
-        output.addSub(subList);
-        animeList[title] = output;
-
+        animeList[title].addSub(subList);
     }
 
     /*
@@ -72,25 +62,28 @@ class AnimeList
      */
     public void addVoiceOutputToAnime(string title, List<string> voiceOutputList)
     {
-        Anime output;
-        animeList.TryGetValue(title, out output);
-        output.addVoiceOutput(voiceOutputList);
-        animeList[title] = output;
+        animeList[title].addVoiceOutput(voiceOutputList);
+    }
+    /*
+     *Add img path if no image path is available 
+     */
+    public void addImgPath(string title, string imgPath)
+    {
+        if(animeList[title].getPathImg().Equals("no cover"))    //Check if no image path is set
+        {
+            animeList[title].setPathImg(imgPath);               //Set if no image path was set
+        }
+        
     }
 
+    /*
+     * Get all animes
+     */
     public Dictionary<string, Anime> getAnimeList()
     {
         return animeList;
     }
 
-    public void printAllEntries()
-    {
-        foreach (Anime anime in animeList.Values)
-        {
-            Console.WriteLine(anime);
-        }
-
-    }
 
     /*
      *Get title of all anime. 
@@ -107,6 +100,9 @@ class AnimeList
         return list;
     }
 
+    /*
+     *Get all anime titles 
+     */
     public Anime getAnimeByTitle(string title)
     {
         return animeList[title];

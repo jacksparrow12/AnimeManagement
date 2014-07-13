@@ -1,0 +1,55 @@
+﻿<Window x:Class="AnimeManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="800"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Height="511" HorizontalAlignment="Left" Margin="0,24,0,0" Name="listBox1" VerticalAlignment="Top" Width="370" SelectionChanged="listBox1_SelectionChanged" Background="WhiteSmoke" UseLayoutRounding="True">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+           
+        <DockPanel Height="22" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open" x:Name="open" Click="OpenMenu_Click"/>
+                    <MenuItem Header="_Save" x:Name="save" Click="SaveMenu_Click"/>
+                    <MenuItem Header="_Exit" x:Name="exit" Click="ExitMenu_Click"/>
+                </MenuItem>
+                 <MenuItem Header="_Options">
+                    <MenuItem Header="_Filter"></MenuItem>
+                </MenuItem>
+           </Menu>
+        </DockPanel>
+        <TabControl Height="530" HorizontalAlignment="Left" Margin="383,5,0,0" Name="tabControl1" VerticalAlignment="Top" Width="372">
+            <TabItem Header="Info" Name="tabItem1">
+              <Grid>
+                    <Image Height="176" HorizontalAlignment="Left" Margin="115,6,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="248"/>
+                    <Label Content="Fansub" Height="28" HorizontalAlignment="Left" Margin="-5,217,0,0" Name="label1" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,217,0,0" Name="fansub" VerticalAlignment="Top" Width="120" />
+                    <Label Content="Episode" Height="28" HorizontalAlignment="Left" Margin="-5,259,0,0" Name="label2" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,259,0,0" Name="episode" VerticalAlignment="Top" Width="120"  />
+                    <Label Content="Title" Height="28" HorizontalAlignment="Left" Margin="-5,188,0,0" Name="label3" VerticalAlignment="Top" />
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="50,188,0,0" Name="title" Text="" VerticalAlignment="Top" />
+                    <Label Content="Subtitle" Height="28" HorizontalAlignment="Right" Margin="0,259,132,0" Name="label4" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="236,259,0,0" Name="subtitle" VerticalAlignment="Top" Width="120" />
+                    <Label Content="Voice" Height="28" HorizontalAlignment="Left" Margin="-5,308,0,0" Name="label5" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,308,0,0" Name="voice" VerticalAlignment="Top" Width="120" />
+                    <Label Content="Source" Height="28" HorizontalAlignment="Left" Margin="179,308,0,0" Name="label6" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="236,308,0,0" Name="source" VerticalAlignment="Top" Width="120" />
+                    <TextBox Height="137" HorizontalAlignment="Left" Margin="55,350,0,0" Name="description" VerticalAlignment="Top" Width="307" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"/>
+                    <Image Height="176" HorizontalAlignment="Left" Margin="200,6,0,0" Name="image2" Stretch="Fill" VerticalAlignment="Top" Width="156" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

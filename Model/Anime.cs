@@ -69,6 +69,34 @@ public class Anime
         this.fansub.Add(fansub);
     }
 
+    public String buildStringOfFansubs()
+    {
+        if (fansub.Count!=0)
+        {
+            string tmp = "";
+            foreach (string fan in fansub)
+            {
+                tmp += fan+", ";
+            }
+            tmp = tmp.Remove(tmp.LastIndexOf(","));
+            return tmp;
+        }
+        else
+        {
+            return "no fansub";
+        }
+        
+    }
+
+    public int getFansubSize()
+    {
+        if (fansub != null)
+        {
+            return this.fansub.Count;
+        }
+        return 0;
+    }
+
     public List<string> getSource()
     {
         return source;
@@ -82,6 +110,24 @@ public class Anime
     public void addSource(string source)
     {
         this.source.Add(source);
+    }
+
+    public string buildStringOfSource()
+    {
+        string tmp = "";
+        if (source.Count != 0)
+        {
+            foreach (string src in source)
+            {
+                tmp += src + ", ";
+            }
+            tmp = tmp.Remove(tmp.LastIndexOf(","));
+            return tmp;
+        }
+        else
+        {
+            return "no source";
+        }
     }
 
     public List<string> getSub()
@@ -102,6 +148,24 @@ public class Anime
         }
     }
 
+    public String buildStringOfSub()
+    {
+        if (this.sub.Count != 0)
+        {
+            string tmp = "";
+            foreach (string sub in this.sub)
+            {
+                tmp += sub+", ";
+            }
+            tmp = tmp.Remove(tmp.LastIndexOf(","));
+            return tmp;
+        }
+        else
+        {
+            return "no subtitle";
+        }
+    }
+
     public List<string> getVoiceOutput()
     {
         return voiceOutput;
@@ -119,6 +183,23 @@ public class Anime
             this.voiceOutput.Add(voice);
         }
      
+    }
+
+    public string buildStringOfVoice()
+    {
+        if (voiceOutput.Count != 0)
+        {
+            string tmp = "";
+            foreach (string voice in voiceOutput)
+            {
+                tmp += voice + ", ";
+            }
+            tmp = tmp.Remove(tmp.LastIndexOf(","));
+            return tmp;
+        }else
+        {
+            return "no voice";
+        }
     }
 
     public string getPathImg()

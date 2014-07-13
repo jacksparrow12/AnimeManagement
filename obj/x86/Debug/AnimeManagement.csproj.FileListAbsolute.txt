@@ -1,0 +1,11 @@
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\bin\Debug\AnimeManagement.exe
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\bin\Debug\AnimeManagement.pdb
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\MainWindow.baml
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\MainWindow.g.cs
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\App.g.cs
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\AnimeManagement_MarkupCompile.cache
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\AnimeManagement.g.resources
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\AnimeManagement.Properties.Resources.resources
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\AnimeManagement.csproj.GenerateResource.Cache
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\AnimeManagement.exe
+C:\Users\ipek\AppData\Local\Temporary Projects\AnimeManagement\obj\x86\Debug\AnimeManagement.pdb

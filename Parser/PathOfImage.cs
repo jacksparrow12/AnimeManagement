@@ -20,5 +20,18 @@ class PathOfImage
         }
         return "no cover";
     }
+
+    public static bool checkIfImgIsAvailable(String path)
+    {
+        string[] fileEntries = Directory.GetFiles(path);
+        foreach (string entry in fileEntries)
+        {
+            if (entry.Contains(".png") || entry.Contains(".jpg"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 

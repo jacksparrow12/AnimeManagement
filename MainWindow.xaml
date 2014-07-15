@@ -21,12 +21,16 @@
         <DockPanel Height="22" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
+                    <MenuItem Header="_Load" x:Name="load" Click="LoadMenu_Click"/>
                     <MenuItem Header="_Open" x:Name="open" Click="OpenMenu_Click"/>
                     <MenuItem Header="_Save" x:Name="save" Click="SaveMenu_Click"/>
                     <MenuItem Header="_Exit" x:Name="exit" Click="ExitMenu_Click"/>
                 </MenuItem>
                  <MenuItem Header="_Options">
                     <MenuItem Header="_Filter"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About AMS" x:Name="about" Click="AboutMenu_Click"></MenuItem>
                 </MenuItem>
            </Menu>
         </DockPanel>

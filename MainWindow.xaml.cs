@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Windows.Forms;
+using System.Windows.Controls.Primitives;
 
 
 namespace AnimeManagement
@@ -22,9 +23,9 @@ namespace AnimeManagement
     /// </summary>
     public partial class MainWindow : Window
     {
-        AnimeList animeList = AnimeList.getInstance();
-        Parser parser = Parser.getInstance();
-        SaveToFile saveFile = SaveToFile.getInstance();
+        private AnimeList animeList = AnimeList.getInstance();
+        private Parser parser = Parser.getInstance();
+        private SaveToFile saveFile = SaveToFile.getInstance();
         public MainWindow()
         {
             InitializeComponent();
@@ -73,13 +74,15 @@ namespace AnimeManagement
         }
 
         private void OpenMenu_Click(object sender, RoutedEventArgs e)
-        {          
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
-            dlg.ShowDialog();
-            string path = dlg.SelectedPath;
+        {
+            OpenFromFile animeParser = OpenFromFile.getInstance();
+            System.Windows.Forms.OpenFileDialog load = new System.Windows.Forms.OpenFileDialog();
+            load.InitialDirectory = "C:\\";
+            load.ShowDialog();
+            string path = load.FileName;
             if (!path.Equals(""))
             {
-                parser.processDirectory(path, 0);
+                animeParser.readAnimesFromFile(path);
             }
             updateList();
         }
@@ -96,9 +99,26 @@ namespace AnimeManagement
             }
         }
 
+        private void LoadMenu_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            dlg.ShowDialog();
+            string path = dlg.SelectedPath;
+            if (!path.Equals(""))
+            {
+                parser.processDirectory(path, 0);
+            }
+            updateList();
+        }
+
         private void ExitMenu_Click(object sender, RoutedEventArgs e)
         {
-           //To do
+            this.Close();
+        }
+
+        private void AboutMenu_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("\tVersion 0.5\t\n\tCreated by iPek\t");
         }
 
         private void updateList()

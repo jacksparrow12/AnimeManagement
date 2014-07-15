@@ -6,6 +6,6 @@ C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManage
 C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Debug\AnimeManagement1_MarkupCompile.cache
 C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Debug\AnimeManagement1.g.resources
 C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Debug\AnimeManagement.Properties.Resources.resources
-C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Debug\AnimeManagement1.csproj.GenerateResource.Cache
 C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Debug\AnimeManagement1.exe
 C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Debug\AnimeManagement1.pdb
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Debug\AnimeManagement1.csproj.GenerateResource.Cache

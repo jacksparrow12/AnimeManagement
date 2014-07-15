@@ -107,5 +107,6 @@ class AnimeList
     {
         return animeList[title];
     }
+
 }
 

@@ -95,6 +95,7 @@
     <Compile Include="Parser\HashMap.cs" />
     <Compile Include="Parser\OpenFromFile.cs" />
     <Compile Include="Parser\Parser.cs" />
+    <Compile Include="Parser\ParserAnimeFromFile.cs" />
     <Compile Include="Parser\PathOfImage.cs" />
     <Compile Include="Parser\RemoveFullPathFromFolder.cs" />
     <Compile Include="Parser\SaveToFile.cs" />

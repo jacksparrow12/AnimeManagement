@@ -22,8 +22,9 @@ class SaveToFile
         {
             foreach (Anime anime in animeList.getAnimeList().Values)
             {
-                writer.Write(anime.getTitle() + "#" + anime.buildStringOfFansubs() + "#" + anime.getEpisode() + "#" + anime.buildStringOfSub() + "#" + anime.buildStringOfVoice() + "#" + anime.buildStringOfSource() + "#" + anime.getDescription() + "#" + anime.getPathImg() + "§\n");
+                writer.Write(anime.getTitle() + "#" + anime.buildStringOfFansubs() + "#" + anime.getEpisode() + "#" + anime.buildStringOfSub() + "#" + anime.buildStringOfVoice() + "#" + anime.buildStringOfSource() + "#" + anime.getDescription() + "#" + anime.getPathImg() + "#" + anime.buildStringOfEpisode() + "§\n");
             }
+            writer.Close();
         }
 
     }

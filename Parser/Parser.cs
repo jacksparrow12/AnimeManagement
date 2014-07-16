@@ -18,7 +18,7 @@ public class Parser
     /*
      * The folders within a path are extrected.
      */
-    public void processDirectory(string path, int depth)
+    public void processDirectory(string path, int depth, string title)
     {
         try
         {
@@ -27,7 +27,7 @@ public class Parser
             {
                 if (depth < 1)
                 {
-                    processDirectory(dir, 1);             //Go one directory deeper
+                    processDirectory(dir, 1, RemoveFullPathFromFolder.getFolder(dir));             //Go one directory deeper
                 }
                 else if (depth == 1)
                 {
@@ -38,14 +38,14 @@ public class Parser
                         Object output;
                         HashMap.getInstance().getMap().TryGetValue("WithFansub", out output);
                         AnimeCreateInterface tmp = (AnimeCreateInterface)output;
-                        tmp.createAnimeObject(dir);
+                        tmp.createAnimeObject(dir, title);
                     }
                     else
                     {
                         Object output;
                         HashMap.getInstance().getMap().TryGetValue("NoFansub", out output);
                         AnimeCreateInterface tmp = (AnimeCreateInterface)output;
-                        tmp.createAnimeObject(dir);
+                        tmp.createAnimeObject(dir, title);
                     }
                 }
                

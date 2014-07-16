@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Windows.Forms;
 using System.Windows.Controls.Primitives;
+using System.Diagnostics;
 
 
 namespace AnimeManagement
@@ -26,6 +27,8 @@ namespace AnimeManagement
         private AnimeList animeList = AnimeList.getInstance();
         private Parser parser = Parser.getInstance();
         private SaveToFile saveFile = SaveToFile.getInstance();
+        private List<string> pathToAnimeFolder = new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,10 +36,9 @@ namespace AnimeManagement
 
         private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            image1.Source = null;
-            image2.Source = null;
+            image1.Source = null;           //This image field is for pictures where the width is bigger than the height
+            image2.Source = null;           //This image field is for pictures where the width is smaller than the height
             string tmp = ((sender as System.Windows.Controls.ListBox).SelectedItem.ToString());
-            AnimeList animeList = AnimeList.getInstance();
             Anime anime = animeList.getAnimeByTitle(tmp);
             try
             {
@@ -51,13 +53,13 @@ namespace AnimeManagement
                     {
                         image2.Source = img;
                     }
-                    
+
                 }
                 else
                 {
-                    image1.Source = new BitmapImage(new Uri(("pack://application:,,,/Images/NoImageFound.jpg")));
+                    image1.Source = new BitmapImage(new Uri(("pack://application:,,,/Resources/noimagefound.jpg")));
                 }
-                        
+
             }
             catch (UriFormatException)
             {
@@ -70,7 +72,7 @@ namespace AnimeManagement
             voice.Text = anime.buildStringOfVoice();
             source.Text = anime.buildStringOfSource();
             description.Text = anime.getDescription();
-   
+            listBoxOfEpisode.ItemsSource = anime.getPathOfEpisode();
         }
 
         private void OpenMenu_Click(object sender, RoutedEventArgs e)
@@ -91,7 +93,7 @@ namespace AnimeManagement
         {
             System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             saveFileDialog.InitialDirectory = "c:\\";
-            saveFileDialog.Filter = "ani files (*.ani)|*.ani|All files (*.*)|*.*"; 
+            saveFileDialog.Filter = "ani files (*.ani)|*.ani|All files (*.*)|*.*";
             saveFileDialog.RestoreDirectory = true;
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -106,8 +108,9 @@ namespace AnimeManagement
             string path = dlg.SelectedPath;
             if (!path.Equals(""))
             {
-                parser.processDirectory(path, 0);
+                parser.processDirectory(path, 0, null);
             }
+            pathToAnimeFolder.Add(path);
             updateList();
         }
 
@@ -123,7 +126,40 @@ namespace AnimeManagement
 
         private void updateList()
         {
-            listBox1.ItemsSource = animeList.getAllTitle();
+            listBox1.ItemsSource = animeList.getSortedAllTitle();
+        }
+
+
+        private void listBoxOfEpisode_MouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string mediaFile = ((sender as System.Windows.Controls.ListBox).SelectedItem.ToString());
+                if (!mediaFile.Equals("No media file found"))
+                {
+                    Process.Start(mediaFile);
+                }                
+            }
+            catch
+            {
+               
+            }
+
+        }
+
+        private void refresh_Click(object sender, RoutedEventArgs e)
+        {
+            animeList.clearList();
+            if (pathToAnimeFolder != null)
+            {
+                for (int i = 0; i < pathToAnimeFolder.Count(); i++)
+                {
+                    parser.processDirectory(pathToAnimeFolder.ToArray()[i], 0, null);
+                }
+                
+            }           
+            updateList();
+           
         }
     }
 }

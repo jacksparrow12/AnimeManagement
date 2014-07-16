@@ -45,7 +45,7 @@ class OpenFromFile
                         }
                 }
             }
-
+            reader.Close();
         }
 
     }

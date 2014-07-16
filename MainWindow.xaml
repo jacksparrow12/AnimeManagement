@@ -39,21 +39,29 @@
               <Grid>
                     <Image Height="176" HorizontalAlignment="Left" Margin="115,6,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="248"/>
                     <Label Content="Fansub" Height="28" HorizontalAlignment="Left" Margin="-5,217,0,0" Name="label1" VerticalAlignment="Top" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,217,0,0" Name="fansub" VerticalAlignment="Top" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,217,0,0" Name="fansub" VerticalAlignment="Top" Width="120" IsReadOnly="True" />
                     <Label Content="Episode" Height="28" HorizontalAlignment="Left" Margin="-5,259,0,0" Name="label2" VerticalAlignment="Top" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,259,0,0" Name="episode" VerticalAlignment="Top" Width="120"  />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,259,0,0" Name="episode" VerticalAlignment="Top" Width="120" IsReadOnly="True" />
                     <Label Content="Title" Height="28" HorizontalAlignment="Left" Margin="-5,188,0,0" Name="label3" VerticalAlignment="Top" />
-                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="50,188,0,0" Name="title" Text="" VerticalAlignment="Top" />
+                    <TextBlock Height="23" HorizontalAlignment="Left" Margin="50,193,0,0" Name="title" VerticalAlignment="Top"/>
                     <Label Content="Subtitle" Height="28" HorizontalAlignment="Right" Margin="0,259,132,0" Name="label4" VerticalAlignment="Top" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="236,259,0,0" Name="subtitle" VerticalAlignment="Top" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="236,259,0,0" Name="subtitle" VerticalAlignment="Top" Width="120" IsReadOnly="True" />
                     <Label Content="Voice" Height="28" HorizontalAlignment="Left" Margin="-5,308,0,0" Name="label5" VerticalAlignment="Top" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,308,0,0" Name="voice" VerticalAlignment="Top" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="50,308,0,0" Name="voice" VerticalAlignment="Top" Width="120" IsReadOnly="True" />
                     <Label Content="Source" Height="28" HorizontalAlignment="Left" Margin="179,308,0,0" Name="label6" VerticalAlignment="Top" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="236,308,0,0" Name="source" VerticalAlignment="Top" Width="120" />
-                    <TextBox Height="137" HorizontalAlignment="Left" Margin="55,350,0,0" Name="description" VerticalAlignment="Top" Width="307" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"/>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="236,308,0,0" Name="source" VerticalAlignment="Top" Width="120" IsReadOnly="True" />
+                    <TextBox Height="137" HorizontalAlignment="Left" Margin="50,350,0,0" Name="description" VerticalAlignment="Top" Width="312" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" IsReadOnly="True" />
                     <Image Height="176" HorizontalAlignment="Left" Margin="200,6,0,0" Name="image2" Stretch="Fill" VerticalAlignment="Top" Width="156" />
                 </Grid>
             </TabItem>
+            <TabItem Header="Stream" Name="stream">
+                <Grid>
+                    <ListBox Height="498" HorizontalAlignment="Left" Name="listBoxOfEpisode" VerticalAlignment="Top" Width="362" Control.MouseDoubleClick="listBoxOfEpisode_MouseDoubleClick" BorderThickness="0" />
+                </Grid>
+            </TabItem>
         </TabControl>
+        <Button Name="refresh"  Height="20" Width="20" Margin="342,-3,416,544" Click="refresh_Click" Focusable="False">
+            <Image DockPanel.Dock="Top" Source="pack://application:,,,/Resources/refresh.png" />
+        </Button>
     </Grid>
 </Window>

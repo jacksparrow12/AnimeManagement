@@ -28,9 +28,11 @@ class ParserAnimeFromFile
         List<string> source = arrayToList(tmpSource);
         string description = animeInfo[6];
         string img = animeInfo[7];
+        string[] mediaFiles = animeInfo[8].Split(',');
+
         if (!animeList.checkIfAnimeIsAlreadyInTheList(title))
         {
-            animeList.addAnimeToList(title, episode, description, fansub, source, sub, dub, img);
+            animeList.addAnimeToList(title, episode, description, fansub, source, sub, dub, img, mediaFiles);
 
         }
 

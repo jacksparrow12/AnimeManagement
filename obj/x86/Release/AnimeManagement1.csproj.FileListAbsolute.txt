@@ -1,0 +1,15 @@
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\bin\Release\AnimeManagement1.exe.manifest
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\bin\Release\AnimeManagement1.application
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\bin\Release\AnimeManagement1.exe
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\bin\Release\AnimeManagement1.pdb
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\MainWindow.baml
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\MainWindow.g.cs
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\App.g.cs
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\AnimeManagement1_MarkupCompile.cache
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\AnimeManagement1.g.resources
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\AnimeManagement.Properties.Resources.resources
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\AnimeManagement1.csproj.GenerateResource.Cache
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\AnimeManagement1.exe.manifest
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\AnimeManagement1.application
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\AnimeManagement1.exe
+C:\Users\ipek\Documents\Visual Studio 2010\Projects\AnimeManagement1\AnimeManagement1\obj\x86\Release\AnimeManagement1.pdb

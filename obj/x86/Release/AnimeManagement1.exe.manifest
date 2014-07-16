@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnimeManagement1.exe" size="664576">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AnimeManagement1.exe" size="660992">
       <assemblyIdentity name="AnimeManagement1" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>m3+YD8H/d46vM9bjhuMT5xHHgQ8=</dsig:DigestValue>
+        <dsig:DigestValue>8gu/+8dacpKvFsrWzcx4eZxxmbU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

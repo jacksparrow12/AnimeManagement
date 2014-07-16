@@ -28,12 +28,13 @@ class Description
             string description = "";
             using (FileStream fs = File.Open(path, FileMode.Open))
             {
-                byte[] b = new byte[1000];
+                byte[] b = new byte[fs.Length];
                 Encoding tmp = Encoding.GetEncoding(1252);      //character encoding for latin alphabet
                 while (fs.Read(b, 0, b.Length) > 0)
                 {
                     description += tmp.GetString(b);
                 }
+                fs.Close();
             }
             return description;
         }

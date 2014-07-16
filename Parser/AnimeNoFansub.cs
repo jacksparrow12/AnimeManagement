@@ -7,10 +7,11 @@ class AnimeNoFansub : AnimeCreateInterface
 {
     private AnimeList instance = AnimeList.getInstance();
 
-    public void createAnimeObject(string path)
+    public void createAnimeObject(string path, string title)
     {
         int episodes = AmountOfEpisodes.getSumOfEpisodes(path);
         string img = PathOfImage.getPathOfImage(path);
+        string[] mediaFiles = PathOfEpisode.getPathOfEpisode(path);
         string folder = RemoveFullPathFromFolder.getFolder(path);
         string description = Description.readFromFile(Description.getDescription(path));
 
@@ -18,7 +19,7 @@ class AnimeNoFansub : AnimeCreateInterface
         string[] animeInfo = folder.Split(split);
 
 
-        string title = "";
+        title = title.Replace("_", " ");
         List<string> sourceList = new List<string>();
         List<string> voiceList = new List<string>();
         List<string> subList = new List<string>();
@@ -27,22 +28,18 @@ class AnimeNoFansub : AnimeCreateInterface
 
         if (animeInfo.Length == 1)
         {
-            title = animeInfo[0].Replace("_", " ");
         }
         else if (animeInfo.Length == 2 || animeInfo.Length == 3)
         {
-            title = animeInfo[0].Replace("_", " "); ;
             sourceList.Add(animeInfo[1]);
         }
         else if (animeInfo.Length == 4 || animeInfo.Length == 5)
         {
-            title = animeInfo[0].Replace("_", " "); 
             sourceList.Add(animeInfo[1]);
             voiceList.Add(animeInfo[3]);
         }
         else if (animeInfo.Length == 7)
         {
-            title = animeInfo[0].Replace("_", " "); 
             sourceList.Add(animeInfo[1]);
             voiceList.Add(animeInfo[3]);
             subList.Add(animeInfo[5]);
@@ -55,7 +52,7 @@ class AnimeNoFansub : AnimeCreateInterface
 
         if (!instance.checkIfAnimeIsAlreadyInTheList(title))
         {
-            instance.addAnimeToList(title, episodes, description, fansubList, sourceList, subList, voiceList, img);
+            instance.addAnimeToList(title, episodes, description, fansubList, sourceList, subList, voiceList, img, mediaFiles);
         }
         else
         {

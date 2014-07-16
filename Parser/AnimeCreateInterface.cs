@@ -7,6 +7,6 @@ using System.Text;
     interface AnimeCreateInterface
     {
 
-        void createAnimeObject(string path);
+        void createAnimeObject(string path, string title);
     }
 

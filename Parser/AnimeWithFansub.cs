@@ -8,10 +8,11 @@ class AnimeWithFansub : AnimeCreateInterface
 {
     private AnimeList instance = AnimeList.getInstance();
 
-    public void createAnimeObject(string path)
+    public void createAnimeObject(string path, string title)
     {
         int episodes = AmountOfEpisodes.getSumOfEpisodes(path);
         string img = PathOfImage.getPathOfImage(path);
+        string[] mediaFiles = PathOfEpisode.getPathOfEpisode(path);
         string folder = RemoveFullPathFromFolder.getFolder(path);
         string description = Description.readFromFile(Description.getDescription(path));
 
@@ -21,7 +22,7 @@ class AnimeWithFansub : AnimeCreateInterface
                                                                       then again an empty element will be added, last but not least when a seperator is at the end then again an empty element will be added to the array */
 
         List<string> fansubList = new List<string>();
-        string title = "none";
+        title = title.Replace("_", " ");
         List<string> voiceOutput = new List<string>();
         List<string> sub = new List<string>();
         List<string> sourceList = new List<string>();
@@ -29,19 +30,17 @@ class AnimeWithFansub : AnimeCreateInterface
         if (animeInfo.Length == 3)
         {
             fansubList.Add(animeInfo[1]);
-            title = animeInfo[2].Replace("_", " ");
+            
         }
         else if (animeInfo.Length == 4 || animeInfo.Length == 5)
         {
             fansubList.Add(animeInfo[1]);
-            title = animeInfo[2].Replace("_", " ");
             sourceList.Add(animeInfo[3]);
 
         }
         else if (animeInfo.Length == 6 || animeInfo.Length == 7)
         {
             fansubList.Add(animeInfo[1]);
-            title = animeInfo[2].Replace("_", " ");
             sourceList.Add(animeInfo[3]);
             if (animeInfo[5].Contains("Sub"))
             {
@@ -55,7 +54,6 @@ class AnimeWithFansub : AnimeCreateInterface
         else if (animeInfo.Length == 9)
         {
             fansubList.Add(animeInfo[1]);
-            title = animeInfo[2].Replace("_", " ");
             sourceList.Add(animeInfo[3]);
             voiceOutput.Add(animeInfo[5]);
             sub.Add(animeInfo[7]);
@@ -69,7 +67,7 @@ class AnimeWithFansub : AnimeCreateInterface
 
         if (!instance.checkIfAnimeIsAlreadyInTheList(title))                                                    //If the anime is not in the list, then add it as new anime.
         {
-            instance.addAnimeToList(title, episodes, description, fansubList, sourceList, sub, voiceOutput, img);
+            instance.addAnimeToList(title, episodes, description, fansubList, sourceList, sub, voiceOutput, img, mediaFiles);
         }
         else
         {

@@ -19,9 +19,9 @@ class AnimeList
     /*
      *Add an Anime to list. 
      */
-    public void addAnimeToList(string title, int episode, string description, List<string> fansub, List<string> source, List<string> sub, List<string> voiceOutput, string pathImg)
+    public void addAnimeToList(string title, int episode, string description, List<string> fansub, List<string> source, List<string> sub, List<string> voiceOutput, string pathImg, string[] mediaFiles)
     {
-        animeList.Add(title, new Anime(title, episode, description, fansub, source, sub, voiceOutput, pathImg));
+        animeList.Add(title, new Anime(title, episode, description, fansub, source, sub, voiceOutput, pathImg, mediaFiles));
     }
 
     /*
@@ -108,5 +108,19 @@ class AnimeList
         return animeList[title];
     }
 
+    /*
+     *Get all anime titles ordered by alphabet
+     */
+    public String[] getSortedAllTitle()
+    {
+        var titleList = animeList.Keys.ToList();
+        titleList.Sort();
+        return titleList.ToArray();
+    }
+
+    public void clearList()
+    {
+        animeList.Clear();
+    }
 }
 

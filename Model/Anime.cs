@@ -11,8 +11,9 @@ public class Anime
     private List<string> sub;
     private List<string> voiceOutput;
     private string pathImg;
+    private string[] pathOfEpisode;
 
-    public Anime(string title, int episode, string description, List<string> fansub, List<string> source, List<string> sub, List<string> voiceOutput, string pathImg)
+    public Anime(string title, int episode, string description, List<string> fansub, List<string> source, List<string> sub, List<string> voiceOutput, string pathImg, string[] pathOfEpisode)
     {
         this.title = title;
         this.episode = episode;
@@ -22,6 +23,7 @@ public class Anime
         this.sub = sub;
         this.voiceOutput = voiceOutput;
         this.pathImg = pathImg;
+        this.pathOfEpisode = pathOfEpisode;
     }
 
     public string getTitle()
@@ -210,6 +212,25 @@ public class Anime
     public void setPathImg(string pathImg)
     {
         this.pathImg = pathImg;
+    }
+
+    public string[] getPathOfEpisode()
+    {
+        return pathOfEpisode;
+    }
+
+    public string buildStringOfEpisode()
+    {
+        if (pathOfEpisode.Length != 0)
+        {
+            string mediaFile = "";
+            for (int i = 0; i < pathOfEpisode.Length; i++)
+            {
+                mediaFile += pathOfEpisode[i] + ", ";
+            }
+            mediaFile = mediaFile.Remove(mediaFile.LastIndexOf(","));
+            return mediaFile;
+        } return "No media file found";
     }
 
     public override String ToString()

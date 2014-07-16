@@ -15,6 +15,7 @@ using Microsoft.Win32;
 using System.Windows.Forms;
 using System.Windows.Controls.Primitives;
 using System.Diagnostics;
+using System.IO;
 
 
 namespace AnimeManagement
@@ -27,6 +28,7 @@ namespace AnimeManagement
         private AnimeList animeList = AnimeList.getInstance();
         private Parser parser = Parser.getInstance();
         private SaveToFile saveFile = SaveToFile.getInstance();
+        private RemoveFullPathFromFolder pathRemover = RemoveFullPathFromFolder.getInstance();
         private List<string> pathToAnimeFolder = new List<string>();
 
         public MainWindow()
@@ -44,20 +46,28 @@ namespace AnimeManagement
             {
                 if (anime.getPathImg().Contains("png") || anime.getPathImg().Contains("jpg"))
                 {
-                    BitmapImage img = new BitmapImage(new Uri(anime.getPathImg()));
-                    if (img.Width > img.Height)
+                    try
                     {
-                        image1.Source = img;
+                        BitmapImage img = new BitmapImage(new Uri(anime.getPathImg()));
+                        if (img.Width > img.Height)
+                        {
+                            image1.Source = img;
+                        }
+                        else
+                        {
+                            image2.Source = img;
+                        }
                     }
-                    else
-                    {
-                        image2.Source = img;
+                    catch(DirectoryNotFoundException)
+                    {                       
+                       image2.Source = new BitmapImage(new Uri(("pack://application:,,,/Resources/NewNoImageFound1.PNG")));
                     }
+                   
 
                 }
                 else
                 {
-                    image1.Source = new BitmapImage(new Uri(("pack://application:,,,/Resources/noimagefound.jpg")));
+                         image2.Source = new BitmapImage(new Uri(("pack://application:,,,/Resources/NewNoImageFound1.PNG")));
                 }
 
             }
@@ -71,8 +81,16 @@ namespace AnimeManagement
             subtitle.Text = anime.buildStringOfSub();
             voice.Text = anime.buildStringOfVoice();
             source.Text = anime.buildStringOfSource();
-            description.Text = anime.getDescription();
-            listBoxOfEpisode.ItemsSource = anime.getPathOfEpisode();
+            description.Text = anime.getDescription();   
+            if (anime.getPathOfEpisode().Length != 0)
+            {
+                listBoxOfEpisode.ItemsSource = pathRemover.removeFullPathFromFiles(anime.getPathOfEpisode());   //remove full path from media files
+            }
+            else
+            {
+                listBoxOfEpisode.ItemsSource = anime.getPathOfEpisode();
+            }
+            
         }
 
         private void OpenMenu_Click(object sender, RoutedEventArgs e)
@@ -135,8 +153,10 @@ namespace AnimeManagement
             try
             {
                 string mediaFile = ((sender as System.Windows.Controls.ListBox).SelectedItem.ToString());
+                mediaFile = pathRemover.addFullPathToFile(mediaFile); //Add full path to media file
                 if (!mediaFile.Equals("No media file found"))
                 {
+
                     Process.Start(mediaFile);
                 }                
             }

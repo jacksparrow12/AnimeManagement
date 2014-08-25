@@ -79,6 +79,7 @@ class AnimeWithFansub : AnimeCreateInterface
             instance.addSubToAnime(title, sub);
             instance.addVoiceOutputToAnime(title, voiceOutput);
             instance.addImgPath(title, img);
+            instance.addMediaFiles(title, mediaFiles);
 
         }
 

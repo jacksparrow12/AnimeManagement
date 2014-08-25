@@ -61,6 +61,7 @@ class AnimeNoFansub : AnimeCreateInterface
             instance.addVoiceOutputToAnime(title, voiceList);
             instance.addSubToAnime(title, subList);
             instance.addImgPath(title, img);
+            instance.addMediaFiles(title, mediaFiles);
         }
 
     }

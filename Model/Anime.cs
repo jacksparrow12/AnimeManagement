@@ -219,6 +219,28 @@ public class Anime
         return pathOfEpisode;
     }
 
+    /*
+     *Add episodes of other fansub groups
+     */
+    public void setPathOfEpisode(string[] mediaFiles)
+    {
+        string[] increaseArray = new string[pathOfEpisode.Length * 2];  //size is times to of the actual array, because we want to store also the episodes of other fansubs 
+        int counter = 0;
+        for (int i = 0; i < pathOfEpisode.Length; i++)                  //first store the episodes of the first fansub
+        {
+            increaseArray[i] = pathOfEpisode[i];
+        }
+        for (int i = pathOfEpisode.Length; i < pathOfEpisode.Length + mediaFiles.Length; i++)   //store the episodes of other fansubs
+        {
+            increaseArray[i] = mediaFiles[counter++];
+        }
+        pathOfEpisode = increaseArray;          
+    }
+
+    
+    /*
+     *if more than one fansub is available then build a string of the episoded of both fansub groups 
+     */
     public string buildStringOfEpisode()
     {
         if (pathOfEpisode.Length != 0)

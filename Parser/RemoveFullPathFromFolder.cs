@@ -8,7 +8,7 @@ using System.IO;
 class RemoveFullPathFromFolder
 {
     private static RemoveFullPathFromFolder instance = new RemoveFullPathFromFolder();
-    private string path;
+    private List<string> pathOfEpisode = new List<string>();
     public static RemoveFullPathFromFolder getInstance()
     {
         return instance;
@@ -24,9 +24,14 @@ class RemoveFullPathFromFolder
     /*
      *Add full path to media file
      */
-    public string addFullPathToFile(string file)
+    public string getPathOfEpisode(string file)
     {
-        return this.path +"\\"+ file;
+        foreach (string entry in pathOfEpisode)
+        {
+            if (entry.Contains(file)) return entry;
+        }
+
+        return "";
     }
 
     /*
@@ -36,12 +41,18 @@ class RemoveFullPathFromFolder
      */
     public String[] removeFullPathFromFiles(string[] file)
     {
-        this.path = Directory.GetParent(file[0]).FullName;
+        string[] mediaFiles = new string[file.Length];
+        for (int i = 0; i < file.Length; i++)
+        {
+            pathOfEpisode.Add(file[i]);
+        }
+
         char[] delim = { '\\' };
         for (int i = 0; i < file.Length; i++)
         {
-            file[i] = file[i].Split(delim).Last();
+            mediaFiles[i] = file[i].Split(delim).Last();
         }
-        return file;
+        return mediaFiles;
     }
+
 }

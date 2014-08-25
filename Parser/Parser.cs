@@ -35,16 +35,13 @@ public class Parser
                     char firstChar = dire[0];
                     if (firstChar == '[' || firstChar == '(')                                           //Folders which starts with '[' or '(' will be parsed to the corresponding Object
                     {
-                        Object output;
-                        HashMap.getInstance().getMap().TryGetValue("WithFansub", out output);
-                        AnimeCreateInterface tmp = (AnimeCreateInterface)output;
+
+                        AnimeCreateInterface tmp = (AnimeCreateInterface)HashMap.getInstance().getMap()["WithFansub"];
                         tmp.createAnimeObject(dir, title);
                     }
                     else
                     {
-                        Object output;
-                        HashMap.getInstance().getMap().TryGetValue("NoFansub", out output);
-                        AnimeCreateInterface tmp = (AnimeCreateInterface)output;
+                        AnimeCreateInterface tmp = (AnimeCreateInterface)HashMap.getInstance().getMap()["NoFansub"];
                         tmp.createAnimeObject(dir, title);
                     }
                 }
